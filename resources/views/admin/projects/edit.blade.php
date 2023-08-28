@@ -54,6 +54,23 @@
                     </select>
                 </div>
 
+                @error('technologies')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="mb-3">
+                    <label class="d-block" for="technologies" class="form-label">
+                        Technologies used
+                    </label>
+                    @foreach ($technologies as $technology)
+                        <input type="checkbox" name="technologies[]" class="form-check-input" id="technologies"
+                            value="{{ $technology->id }}" @if ($project->technologies->contains($technology->id)) checked @endif>
+                        <label for="technologies" class="form-check-label me-3">
+                            {{ $technology->name }}
+                        </label>
+                    @endforeach
+
+                </div>
+
                 <div class="mb-3">
                     <label for="currentImage" class="form-label mb-2">Current Image:</label>
                     <p>{{ $project->image }}</p>

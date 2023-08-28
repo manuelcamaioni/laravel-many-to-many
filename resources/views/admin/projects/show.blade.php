@@ -10,7 +10,15 @@
                         <h5 class="card-title">
                             Title: {{ $project->title }} -- Type: {{ $project->type->name }}
                         </h5>
-                        <h5>Slug: {{ $project->slug }}</h5>
+
+                        @if (count($project->technologies) > 0)
+                            <h5>Technologies used:</h5>
+                            @foreach ($project->technologies as $technology)
+                                <span class="me-3"><strong>{{ $technology->name }}</strong></span>
+                            @endforeach
+                        @else
+                            <h5 class="text-danger">Update with technologies used for this project!!! </h5>
+                        @endif
                         <div class="mb-3">
 
                             @if (str_starts_with($project->image, 'http'))

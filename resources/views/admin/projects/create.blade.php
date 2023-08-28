@@ -31,6 +31,19 @@
                             @endforeach
                         </select>
                     </div>
+                    @error('technologies')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="mb-3">
+                        <label class="d-block" for="technologies" class="form-label">
+                            Technologies used
+                        </label>
+                        @foreach ($technologies as $technology)
+                            <input type="checkbox" name="technologies[]" id="technologies" value="{{ $technology->id }}">
+                            <label for="technologies[]">{{ $technology->name }}</label>
+                        @endforeach
+
+                    </div>
                     @error('image')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
