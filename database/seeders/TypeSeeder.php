@@ -22,7 +22,6 @@ class TypeSeeder extends Seeder
         foreach ($types as $type) {
             $newType = new Type();
             $newType->name = $type;
-            $newType->slug = Str::of($type)->slug('-');
             $newType->save();
         }
     }
